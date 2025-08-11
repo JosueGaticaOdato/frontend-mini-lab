@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magnetic Icon</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <ul>
+      <li style="--clr: #3b5998">
+        <a href=""></a>
+        <i class="fa-brands fa-facebook-f"></i>
+      </li>
+      <li style="--clr: #1da1f2">
+        <a href=""></a>
+        <i class="fa-brands fa-x-twitter"></i>
+      </li>
+      <li style="--clr: #c32aa3">
+        <a href=""></a>
+        <i class="fa-brands fa-instagram"></i>
+      </li>
+      <li style="--clr: #ff0000">
+        <a href=""></a>
+        <i class="fa-brands fa-youtube"></i>
+      </li>
+      <div id="cursor"></div>
+    </ul>
+    <script>
+      let cursor = document.getElementById("cursor");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.pageX + "px";
+        cursor.style.top = e.pageY + "px";
+      })
+      let items = document.querySelectorAll("ul li").forEach(item => {
+        item.addEventListener("mousemove", (e) => {
+          let x = e.offsetX;
+          let y = e.offsetY;
+
+          let itemWidth = item.clientWidth;
+          let itemHeight = item.clientHeight;
+
+          let transX = (x - itemWidth / 2);
+          let transY = (y - itemHeight / 2);
+
+          item.style.transform =  `translateX(${transX}px) translateY(${transY}px)`;
+        })
+        item.addEventListener("mouseout", (e) => {
+          item.style.transform =  "";
+        })
+      })
+    </script>
+  </body>
+</html>
