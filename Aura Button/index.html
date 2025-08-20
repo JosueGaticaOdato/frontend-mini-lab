@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glowing Particle Button</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="btn-container">
+      <button class="glow-btn">Button</button>
+    </div>
+    <script>
+      let btnContainer = document.querySelector(".btn-container");
+      let button = document.querySelector(".glow-btn");
+      let interval;
+
+      let spawnDistance = 20;
+      function createParticles(){
+        let particles = document.createElement("div");
+        particles.classList.add("particles");
+        let btnWidth = button.offsetWidth;
+        let btnHeight = button.offsetHeight;
+
+        let angle = Math.random() * 2 * Math.PI;
+        let x = btnWidth / 2 + Math.cos(angle) * spawnDistance;
+        let y = btnHeight / 2 + Math.sin(angle) * spawnDistance;
+
+        let dx = Math.cos(angle) * 100;
+        let dy = Math.sin(angle) * 100;
+
+        particles.style.left = `${x}px`;
+        particles.style.top = `${y}px`;
+        particles.style.setProperty("--dx",`${dx}px`);
+        particles.style.setProperty("--dy",`${dy}px`);
+
+        btnContainer.appendChild(particles);
+        setTimeout(() => {
+          particles.remove()
+        },2000)
+      }
+
+      button.addEventListener("mouseenter", () => {
+        interval = setInterval(createParticles,80)
+      })
+
+      button.addEventListener("mouseleave", () => {
+        clearInterval(interval)
+      })
+    </script>
+  </body>
+</html>
