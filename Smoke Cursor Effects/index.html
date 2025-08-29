@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smoke</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="smoke"></div>
+  <script>
+    let smoke = document.getElementById("smoke");
+
+    function createSmoke(e){
+      let elem = document.createElement("div");
+      elem.classList.add("elem");
+
+      elem.style.left = `${e.clientX}px`;
+      elem.style.top = `${e.clientY}px`;
+      smoke.appendChild(elem);
+
+      elem.addEventListener("animationend",()=>{
+        elem.remove();
+      })
+    }
+
+    document.addEventListener("mousemove", createSmoke);
+  </script>
+</body>
+</html>
