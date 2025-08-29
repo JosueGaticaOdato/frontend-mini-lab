@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tooltip Text Move</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <img src="img1.jpg" alt="" srcset="" />
+        <span class="tooltip">Cooooooool</span>
+      </div>
+      <div class="box">
+        <img src="img2.jpg" alt="" srcset="" />
+        <span class="tooltip">Awesomeeeeee</span>
+      </div>
+      <div class="box">
+        <img src="img3.jpg" alt="" srcset="" />
+        <span class="tooltip">Wowwwwwww</span>
+      </div>
+    </div>
+    <script>
+      let tooltips = document.querySelectorAll(".tooltip");
+      window.onmousemove = function(e){
+        let x = (e.clientX + 20) + "px";
+        let y = (e.clientY + 20) + "px";
+        for (var i=0; i < tooltips.length; i++){
+          tooltips[i].style.top = y;
+          tooltips[i].style.left = x;
+        }
+      }
+    </script>
+  </body>
+</html>
