@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotlight Effect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="spotlight"></div>
+  <div class="cont">
+    <h2>Spotlight using CSS & Javascript</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus rerum beatae totam cupiditate, quaerat, minima fuga commodi placeat consequatur dignissimos rem expedita incidunt laudantium? Modi esse iure tempore delectus iusto.</p>
+  </div>
+  <script>
+    let body = document.querySelector("body");
+    let spotlight = document.querySelector(".spotlight");
+
+    window.onmousemove = function (e){
+      spotlight.style.top = e.clientY + "px"
+      spotlight.style.left = e.clientX + "px";
+    }
+
+    body.ondblclick = function(){
+      body.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>m
