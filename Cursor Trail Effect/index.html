@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursor Trails</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js" integrity="sha512-NcZdtrT77bJr4STcmsGAESr06BYGE8woZdSdEgqnpyqac7sugNO+Tr4bGwGF3MsnEkGKhU2KL2xh6Ec+BqsaHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+  <div class="cursor"></div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let cursor = document.querySelector(".cursor");
+      for (let i = 0; i < 20; i++){
+        let span = document.createElement("span");
+        span.style.setProperty("--i",i+1);
+        span.style.left = i * 15 + "px";
+        cursor.appendChild(span);
+      }
+      document.addEventListener("mousemove", e => {
+        gsap.to("span",{
+          x: e.clientX,
+          y : e.clientY,
+          stagger: 0.05
+        })
+      })
+    })
+  </script>
+</body>
+</html>
